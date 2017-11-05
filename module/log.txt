@@ -1,0 +1,681 @@
+
+Bad key "ckend" on line 1 in
+/Users/shibozhang/.matplotlib/matplotlibrc.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+XYPos: (22, 496)
+XYTrn shape: (91, 496)
+XYTest shape: (41, 496)
+FPrev:  1
+DPrev:  1
+
+============== STAGE:  0  ==============
+number of feats: 1
+  clf thres:  10.2175338763
+  overall recall_pos:  0.375
+  overall false positive rate:  0.151515151515
+/Users/shibozhang/anaconda/lib/python3.6/site-packages/PASDAC-1.0.0-py3.6.egg/PASDAC/ml.py:51: RuntimeWarning: invalid value encountered in long_scalars
+/Users/shibozhang/anaconda/lib/python3.6/site-packages/PASDAC-1.0.0-py3.6.egg/PASDAC/ml.py:52: RuntimeWarning: invalid value encountered in long_scalars
+/Users/shibozhang/anaconda/lib/python3.6/site-packages/sklearn/metrics/classification.py:516: RuntimeWarning: invalid value encountered in double_scalars
+  mcc = cov_ytyp / np.sqrt(var_yt * var_yp)
+  clf thres:  8.21753387634
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 2
+  clf thres:  28.2922036532
+  overall recall_pos:  0.5
+  overall false positive rate:  0.121212121212
+  clf thres:  26.2922036532
+  clf thres:  24.2922036532
+  clf thres:  22.2922036532
+  clf thres:  20.2922036532
+  overall recall_pos:  0.75
+  overall false positive rate:  0.212121212121
+Succeed! 
+
+FPrev:  0.212121212121
+DPrev:  0.75
+
+============== STAGE:  1  ==============
+number of feats: 3
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  29.6585627627
+  clf thres:  29.6585627627
+  overall recall_pos:  0.46875
+  overall false positive rate:  0.121212121212
+  clf thres:  27.6585627627
+  clf thres:  25.6585627627
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 4
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  47.3669848418
+  clf thres:  47.3669848418
+  overall recall_pos:  0.46875
+  overall false positive rate:  0.151515151515
+  clf thres:  45.3669848418
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 5
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  58.0918557977
+  clf thres:  58.0918557977
+  overall recall_pos:  0.375
+  overall false positive rate:  0.0606060606061
+  clf thres:  56.0918557977
+  clf thres:  54.0918557977
+  clf thres:  52.0918557977
+  clf thres:  50.0918557977
+  clf thres:  48.0918557977
+  clf thres:  46.0918557977
+  clf thres:  44.0918557977
+  clf thres:  42.0918557977
+  clf thres:  40.0918557977
+  clf thres:  38.0918557977
+  clf thres:  36.0918557977
+  clf thres:  34.0918557977
+  clf thres:  32.0918557977
+  clf thres:  30.0918557977
+  clf thres:  28.0918557977
+  clf thres:  26.0918557977
+  clf thres:  24.0918557977
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 6
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  109.787846805
+  clf thres:  109.787846805
+  overall recall_pos:  0.65625
+  overall false positive rate:  0.121212121212
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 7
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  79.2647582467
+  clf thres:  79.2647582467
+  overall recall_pos:  0.65625
+  overall false positive rate:  0.181818181818
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 8
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  95.7037647738
+/Users/shibozhang/anaconda/lib/python3.6/site-packages/PASDAC-1.0.0-py3.6.egg/PASDAC/ml.py:52: RuntimeWarning: invalid value encountered in double_scalars
+  clf thres:  95.7037647738
+  overall recall_pos:  0.65625
+  overall false positive rate:  0.212121212121
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 9
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  98.373102563
+  clf thres:  98.373102563
+  overall recall_pos:  0.46875
+  overall false positive rate:  0.0909090909091
+  clf thres:  96.373102563
+  clf thres:  94.373102563
+  clf thres:  92.373102563
+  clf thres:  90.373102563
+  clf thres:  88.373102563
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 10
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  82.3606227263
+  clf thres:  82.3606227263
+  overall recall_pos:  0.375
+  overall false positive rate:  0.0606060606061
+  clf thres:  80.3606227263
+  clf thres:  78.3606227263
+  clf thres:  76.3606227263
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 11
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  76.9087807582
+  clf thres:  76.9087807582
+  overall recall_pos:  0.46875
+  overall false positive rate:  0.0909090909091
+  clf thres:  74.9087807582
+  clf thres:  72.9087807582
+  clf thres:  70.9087807582
+  clf thres:  68.9087807582
+  clf thres:  66.9087807582
+  clf thres:  64.9087807582
+  clf thres:  62.9087807582
+  clf thres:  60.9087807582
+  clf thres:  58.9087807582
+  clf thres:  56.9087807582
+  clf thres:  54.9087807582
+  clf thres:  52.9087807582
+  clf thres:  50.9087807582
+  clf thres:  48.9087807582
+  clf thres:  46.9087807582
+  clf thres:  44.9087807582
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 12
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  101.751840584
+  clf thres:  101.751840584
+  overall recall_pos:  0.65625
+  overall false positive rate:  0.0909090909091
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 13
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  93.3011808556
+  clf thres:  93.3011808556
+  overall recall_pos:  0.375
+  overall false positive rate:  0.0606060606061
+  clf thres:  91.3011808556
+  clf thres:  89.3011808556
+  clf thres:  87.3011808556
+  clf thres:  85.3011808556
+  clf thres:  83.3011808556
+  clf thres:  81.3011808556
+  clf thres:  79.3011808556
+  clf thres:  77.3011808556
+  clf thres:  75.3011808556
+  clf thres:  73.3011808556
+  clf thres:  71.3011808556
+  clf thres:  69.3011808556
+  clf thres:  67.3011808556
+  clf thres:  65.3011808556
+  clf thres:  63.3011808556
+  clf thres:  61.3011808556
+  clf thres:  59.3011808556
+  clf thres:  57.3011808556
+  clf thres:  55.3011808556
+  clf thres:  53.3011808556
+  clf thres:  51.3011808556
+  clf thres:  49.3011808556
+  clf thres:  47.3011808556
+  clf thres:  45.3011808556
+  clf thres:  43.3011808556
+  clf thres:  41.3011808556
+  clf thres:  39.3011808556
+  clf thres:  37.3011808556
+  clf thres:  35.3011808556
+  clf thres:  33.3011808556
+  clf thres:  31.3011808556
+  clf thres:  29.3011808556
+  clf thres:  27.3011808556
+  clf thres:  25.3011808556
+  clf thres:  23.3011808556
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 14
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  131.177329706
+  clf thres:  131.177329706
+  overall recall_pos:  0.5625
+  overall false positive rate:  0.121212121212
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 15
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  91.2672054192
+  clf thres:  91.2672054192
+  overall recall_pos:  0.65625
+  overall false positive rate:  0.0909090909091
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 16
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  86.7451687664
+  clf thres:  86.7451687664
+  overall recall_pos:  0.65625
+  overall false positive rate:  0.121212121212
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 17
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  86.7074416497
+  clf thres:  86.7074416497
+  overall recall_pos:  0.375
+  overall false positive rate:  0.0909090909091
+  clf thres:  84.7074416497
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 18
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  98.860866804
+  clf thres:  98.860866804
+  overall recall_pos:  0.46875
+  overall false positive rate:  0.0909090909091
+  clf thres:  96.860866804
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 19
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  101.752873382
+  clf thres:  101.752873382
+  overall recall_pos:  0.65625
+  overall false positive rate:  0.151515151515
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 20
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  110.073767305
+  clf thres:  110.073767305
+  overall recall_pos:  0.5625
+  overall false positive rate:  0.0909090909091
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 21
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  83.0210843664
+  clf thres:  83.0210843664
+  overall recall_pos:  0.375
+  overall false positive rate:  0.0909090909091
+  clf thres:  81.0210843664
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 22
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  133.675383105
+  clf thres:  133.675383105
+  overall recall_pos:  0.5625
+  overall false positive rate:  0.0909090909091
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 23
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  83.2730803196
+  clf thres:  83.2730803196
+  overall recall_pos:  0.5625
+  overall false positive rate:  0.121212121212
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 24
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  103.504425577
+  clf thres:  103.504425577
+  overall recall_pos:  0.65625
+  overall false positive rate:  0.0909090909091
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 25
+DEBUG: thres_list:  [20.29220365321137]
+DEBUG: T_list:  [100]
+  clf thres:  102.083882742
+  clf thres:  102.083882742
+  overall recall_pos:  0.46875
+  overall false positive rate:  0.0606060606061
+  clf thres:  100.083882742
+  clf thres:  98.0838827421
+  clf thres:  96.0838827421
+  clf thres:  94.0838827421
+  clf thres:  92.0838827421
+  clf thres:  90.0838827421
+  clf thres:  88.0838827421
+  clf thres:  86.0838827421
+  clf thres:  84.0838827421
+  clf thres:  82.0838827421
+  overall recall_pos:  0.5625
+  overall false positive rate:  0.0606060606061
+Succeed! 
+
+FPrev:  0.0606060606061
+DPrev:  0.5625
+
+============== STAGE:  2  ==============
+number of feats: 26
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  101.947840727
+  clf thres:  101.947840727
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 27
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  97.3796279115
+  clf thres:  97.3796279115
+  overall recall_pos:  0.2109375
+  overall false positive rate:  0.030303030303
+  clf thres:  95.3796279115
+  clf thres:  93.3796279115
+  clf thres:  91.3796279115
+  clf thres:  89.3796279115
+  clf thres:  87.3796279115
+  clf thres:  85.3796279115
+  clf thres:  83.3796279115
+  clf thres:  81.3796279115
+  clf thres:  79.3796279115
+  clf thres:  77.3796279115
+  clf thres:  75.3796279115
+  clf thres:  73.3796279115
+  clf thres:  71.3796279115
+  clf thres:  69.3796279115
+  clf thres:  67.3796279115
+  clf thres:  65.3796279115
+  clf thres:  63.3796279115
+  clf thres:  61.3796279115
+  clf thres:  59.3796279115
+  clf thres:  57.3796279115
+  clf thres:  55.3796279115
+  clf thres:  53.3796279115
+  clf thres:  51.3796279115
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 28
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  103.009612532
+  clf thres:  103.009612532
+  overall recall_pos:  0.3515625
+  overall false positive rate:  0.0606060606061
+  clf thres:  101.009612532
+  clf thres:  99.009612532
+  clf thres:  97.009612532
+  clf thres:  95.009612532
+  clf thres:  93.009612532
+  clf thres:  91.009612532
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 29
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  121.422622016
+  clf thres:  121.422622016
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 30
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  102.622892495
+  clf thres:  102.622892495
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 31
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  118.425095238
+  clf thres:  118.425095238
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 32
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  91.5024331564
+  clf thres:  91.5024331564
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 33
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  101.159790059
+  clf thres:  101.159790059
+  overall recall_pos:  0.3515625
+  overall false positive rate:  0.030303030303
+  clf thres:  99.1597900593
+  clf thres:  97.1597900593
+  clf thres:  95.1597900593
+  clf thres:  93.1597900593
+  clf thres:  91.1597900593
+  clf thres:  89.1597900593
+  clf thres:  87.1597900593
+  clf thres:  85.1597900593
+  clf thres:  83.1597900593
+  clf thres:  81.1597900593
+  clf thres:  79.1597900593
+  clf thres:  77.1597900593
+  clf thres:  75.1597900593
+  clf thres:  73.1597900593
+  clf thres:  71.1597900593
+  clf thres:  69.1597900593
+  clf thres:  67.1597900593
+  clf thres:  65.1597900593
+  clf thres:  63.1597900593
+  clf thres:  61.1597900593
+  clf thres:  59.1597900593
+  clf thres:  57.1597900593
+  clf thres:  55.1597900593
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 34
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  100.53071217
+  clf thres:  100.53071217
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 35
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  113.009529081
+  clf thres:  113.009529081
+  overall recall_pos:  0.5625
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 36
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  108.514161624
+  clf thres:  108.514161624
+  overall recall_pos:  0.140625
+  overall false positive rate:  0.0
+  clf thres:  106.514161624
+  clf thres:  104.514161624
+  clf thres:  102.514161624
+  clf thres:  100.514161624
+  clf thres:  98.5141616242
+  clf thres:  96.5141616242
+  clf thres:  94.5141616242
+  clf thres:  92.5141616242
+  clf thres:  90.5141616242
+  clf thres:  88.5141616242
+  clf thres:  86.5141616242
+  clf thres:  84.5141616242
+  clf thres:  82.5141616242
+  clf thres:  80.5141616242
+  clf thres:  78.5141616242
+  clf thres:  76.5141616242
+  clf thres:  74.5141616242
+  clf thres:  72.5141616242
+  clf thres:  70.5141616242
+  clf thres:  68.5141616242
+  clf thres:  66.5141616242
+  clf thres:  64.5141616242
+  clf thres:  62.5141616242
+  clf thres:  60.5141616242
+  clf thres:  58.5141616242
+  clf thres:  56.5141616242
+  clf thres:  54.5141616242
+  clf thres:  52.5141616242
+  clf thres:  50.5141616242
+  clf thres:  48.5141616242
+  clf thres:  46.5141616242
+  clf thres:  44.5141616242
+  clf thres:  42.5141616242
+  clf thres:  40.5141616242
+  clf thres:  38.5141616242
+  clf thres:  36.5141616242
+  clf thres:  34.5141616242
+  clf thres:  32.5141616242
+  clf thres:  30.5141616242
+  clf thres:  28.5141616242
+  clf thres:  26.5141616242
+  clf thres:  24.5141616242
+  clf thres:  22.5141616242
+  clf thres:  20.5141616242
+  clf thres:  18.5141616242
+  clf thres:  16.5141616242
+  clf thres:  14.5141616242
+  clf thres:  12.5141616242
+  clf thres:  10.5141616242
+  clf thres:  8.51416162418
+  clf thres:  6.51416162418
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 37
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  115.945203962
+  clf thres:  115.945203962
+  overall recall_pos:  0.5625
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 38
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  103.14215548
+  clf thres:  103.14215548
+  overall recall_pos:  0.3515625
+  overall false positive rate:  0.0606060606061
+  clf thres:  101.14215548
+  clf thres:  99.1421554799
+  clf thres:  97.1421554799
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 39
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  120.162428291
+  clf thres:  120.162428291
+  overall recall_pos:  0.5625
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 40
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  111.847337052
+  clf thres:  111.847337052
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 41
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  99.4062033604
+  clf thres:  99.4062033604
+  overall recall_pos:  0.3515625
+  overall false positive rate:  0.0606060606061
+  clf thres:  97.4062033604
+  clf thres:  95.4062033604
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 42
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  119.778548597
+  clf thres:  119.778548597
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 43
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  119.728492633
+  clf thres:  119.728492633
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 44
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  99.8531712524
+  clf thres:  99.8531712524
+  overall recall_pos:  0.28125
+  overall false positive rate:  0.030303030303
+  clf thres:  97.8531712524
+  clf thres:  95.8531712524
+  Fail: F cannot be less than f when D is greater than or equal to d 
+
+number of feats: 45
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  93.7766730864
+  clf thres:  93.7766730864
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 46
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  138.470717149
+  clf thres:  138.470717149
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 47
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  135.453735936
+  clf thres:  135.453735936
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 48
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  114.180779382
+  clf thres:  114.180779382
+  overall recall_pos:  0.4921875
+  overall false positive rate:  0.0606060606061
+  Specific case pursued came out: F > f !!! need to tune F, D, f, d 
+
+number of feats: 49
+DEBUG: thres_list:  [20.29220365321137, 82.083882742059131]
+DEBUG: T_list:  [100, 100]
+  clf thres:  95.0009558902
+  clf thres:  95.0009558902
+  overall recall_pos:  0.3515625
+  overall false positive rate:  0.0
+  clf thres:  93.0009558902
+  overall recall_pos:  0.421875
+  overall false positive rate:  0.0
+Succeed! 
+
+XYPos: (22, 496)
+XYTrn shape: (91, 496)
+XYTest shape: (41, 496)
+thres_list:  [20.29220365321137, 82.083882742059131, 93.000955890204381]
+([0.21212121212121213, 0.2857142857142857, 0.0], [0.75, 0.83333333333333337, 0.80000000000000004], 0.0, 0.5)
+[Finished in 99.7s]
