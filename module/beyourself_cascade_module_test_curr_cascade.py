@@ -31,14 +31,14 @@ class Stage(object):
     def forward(self, F, D, T_list, all_feat_list, n_feats, n_feats_list, beta_list, thres_list, path_list, XYTrn, XYTest):
         FPrev = F
         DPrev = D
-        print('FPrev: ', FPrev)
-        print('DPrev: ', DPrev)
+        print('  FPrev: ', FPrev)
+        print('  DPrev: ', DPrev)
         print('\n============== STAGE: ', self.count,' ==============')
 
         while F > FPrev*self.f and n_feats < len(all_feat_list):
             
             n_feats = n_feats + 1
-            print('number of feats:', n_feats)
+            print('  number of feats:', n_feats)
             
             ######################################################################################
             #       build strong classifier with only first n_feats features in train set 
@@ -74,7 +74,7 @@ class Stage(object):
             print("  overall recall_pos: ",D)
             print("  overall false positive rate: ", F)
             
-            if D > DPrev*self.d and F < FPrev*self.f:
+            if D >= DPrev*self.d and F <= FPrev*self.f:
                 thres_list.append(clf_thres)
                 print('Succeed!')
 
@@ -100,16 +100,27 @@ class Stage(object):
                     # print("  recall_pos: ",D)
                     # print("  false positive rate: ", F)
                     
-                if D > DPrev*self.d:
-                    if F < FPrev*self.f:
+                if D >= DPrev*self.d:
+                    if F <= FPrev*self.f:
                         thres_list.append(clf_thres)
                         print("  overall recall_pos: ",D)
                         print("  overall false positive rate: ", F)
                         print('Succeed!', '\n')
                     else:
                         print('  Fail: F cannot be less than f when D is greater than or equal to d', '\n')
+                        # print('   F: ',F)
+                        # print('   FPrev:', FPrev)
+                        # print('   F > FPrev*self.f:', F > FPrev*self.f)
+                        # print('   n_feats < len(all_feat_list):', n_feats < len(all_feat_list))
+                        # print('   F > FPrev*self.f and n_feats < len(all_feat_list):', F > FPrev*self.f and n_feats < len(all_feat_list))
+
                 else:
                     print('  Fail, D cannot be greater than or equal to d', '\n')
+                    print('   F: ',F)
+                    print('   FPrev:', FPrev)
+                    print('   F > FPrev*self.f:', F > FPrev*self.f)
+                    print('   n_feats < len(all_feat_list):', n_feats < len(all_feat_list))
+                    print('   F > FPrev*self.f and n_feats < len(all_feat_list):', F > FPrev*self.f and n_feats < len(all_feat_list))
 
             elif F > FPrev*self.f:
                     print('  Specific case pursued came out: F > f !!! need to tune F, D, f, d', '\n')
@@ -131,7 +142,7 @@ class Stage(object):
         
 
 class Cascaded(object):
-    
+
     def __init__(self, stage_parameter, split, model_path):
         self.parameter = stage_parameter
         self.split = split
@@ -204,7 +215,7 @@ if __name__ == "__main__":
     XY = read_haar_feat_random_select_samples(meals, REC, WINSIZE, ratio = 5, use_seed = 1)
 
     model = Cascaded(
-        stage_parameter=[(0.3, 0.7, 100), (0.3, 0.7, 100),(0.3, 0.7, 100)],
+        stage_parameter=[(0.5, 0.9, 100), (0.5, 0.9, 100)],
         split=0.7,
         model_path="./modularized_cascade_model/"
     )
@@ -228,6 +239,15 @@ if __name__ == "__main__":
     print('thres_list: ', thres_list)
 
     model.test(XYTest, T_list, all_feat_list, n_feats_list, beta_list, thres_list, path_list)
+
+
+# ERROR CASE:
+
+    # model = Cascaded(
+    #     stage_parameter=[(0.5, 0.9, 100), (0.5, 0.9, 100)],
+    #     split=0.7,
+    #     model_path="./modularized_cascade_model/"
+    # )
 
 
 

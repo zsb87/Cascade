@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[2]:
+# In[5]:
 
 import numpy as np
 import pandas as pd
@@ -108,7 +108,7 @@ def loadWeakClf(mdlname, configFile):
 
 # ## boosting component
 
-# In[44]:
+# In[2]:
 
 def weval(yLabel,yPred,w_norm):
 #     
@@ -127,7 +127,7 @@ def weval(yLabel,yPred,w_norm):
 # weval(np.asarray([0,1,0,1,1]),np.asarray([1,1,1,0,1]),np.asarray([0.2,0.1,0.3,.2,.2]))
 
 
-# In[45]:
+# In[6]:
 
 def wUpdate(beta, t, errmin, w_norm, samples, yLabel, yPred):
 # 
@@ -149,7 +149,7 @@ def wUpdate(beta, t, errmin, w_norm, samples, yLabel, yPred):
 ##
 #########################################################################
 '''
-# wUpdate(beta=np.zeros(10), t=1, errmin=0.1, w_norm=np.array([0.2,0.4,0.4]), samples=3, yLabel=np.array([0,1,0]), yPred=np.array([0,0,0]))
+wUpdate(beta=np.zeros(10), t=1, errmin=0.1, w_norm=np.array([0.2,0.4,0.4]), samples=3, yLabel=np.array([0,1,0]), yPred=np.array([0,0,0]))
 
 
 # # import dataset
@@ -504,11 +504,6 @@ def loadStrongClfAdjThres(XY, T, mdlpath ,clfThres):
 
 
 # ## component for cascaded clf
-
-# In[56]:
-
-
-
 
 # In[57]:
 
@@ -1326,5 +1321,9 @@ def updateTrnUsingFP_allTrueSamples(XYPosTrn, yRes, XYTestNFeat):
 
 # In[ ]:
 
-
+# Life is a journey. Don't get lost. 
+# The TV show exibits all kinds of emotional issues. Almost everything in it exceeds the boundary that you can ever imagine. It shows all 
+# I Never 
+# 
+# 
 
