@@ -29,7 +29,7 @@ def query_plot_acc(df, start, end, title='acc'):
     styles1 = ['b-','r-','y-']
     df_accel.plot(style=styles1,ax=f.gca())
     plt.title(title, color='black')
-    plt.savefig('/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/m0824_1/acc.png')
+    plt.savefig('/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/'+subj+'/wrist/m0824_1/acc.png')
     
     return df_accel
 
@@ -46,37 +46,45 @@ def query_acc(df, start, end):
 
 ABSOLUTE_TIME_FORMAT = "%Y-%m-%d %H:%M:%S.%f%z"
 
+
 meal = 'm0824_1'
+subj = 'P120'
 
 
-feat_folder = '/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/haar_feature/'
+feat_folder = '/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/'+subj+'/wrist/haar_feature/'
 # file = '/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P108/WRIST_bymeal/0807meal1_part1/data_label/accel_label.csv'
-acc_file = '/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/'+meal+'/data_label/accel_label.csv'
-gyr_file = '/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/'+meal+'/data_label/gyro_label.csv'
-# acc_df = pd.read_csv(acc_file)
+
+acc_file = '/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/'+subj+'/wrist/'+meal+'/data_label/accel_label.csv'
+gyr_file = '/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/'+subj+'/wrist/'+meal+'/data_label/gyro_label.csv'
 # acc_df['Time'] = pd.to_datetime(acc_df['Time'])
 # acc = query_plot_acc(acc_df, '2017-08-24 08:37:58.806-0500',  '2017-08-24 08:38:00.856-0500')
 
 
-sensors = ["Accelerometer"]# "Gyroscope",
 
 create_folder(os.path.join(feat_folder, meal))
 
 # Set the frame and step size
 FRAME_SIZE_SEC = 2
-STEP_SIZE_SEC = float(FRAME_SIZE_SEC/2)
-SIMPLING_RATE = 20
 
-
-
-frame_size = int(FRAME_SIZE_SEC * SIMPLING_RATE)
-step_size = int(STEP_SIZE_SEC * SIMPLING_RATE)
 
 # save features in several single files for speed
 SAVE_BATCH = 50*step_size
 
-name_axes = ['accX', 'accY', 'accZ']
 
+# FEATURE_CATEGORY = 0 # raw signal of gyro and accel.  filename: accXYZ_label_win, gyrXYZ_label_win
+FEATURE_CATEGORY = 1 # derivative of gyro and accel. filename: devGyrXYZ_label_winX, devAccXYZ_label_winX
+# FEATURE_CATEGORY = 2 # haar feature of derivative of gyro and accel. filename: feat_rec12_label_winX
+
+
+sensors = ["Accelerometer","Gyroscope"]
+
+
+
+SIMPLING_RATE = 20
+
+STEP_SIZE_SEC = float(FRAME_SIZE_SEC/2)
+frame_size = int(FRAME_SIZE_SEC * SIMPLING_RATE)
+step_size = int(STEP_SIZE_SEC * SIMPLING_RATE)
 
 for sensor in sensors:
     
@@ -85,13 +93,15 @@ for sensor in sensors:
     if sensor == 'Gyroscope':
         data_df = pd.read_csv(gyr_file)
         data_df = data_df[['Unixtime', 'rotX', 'rotY', 'rotZ', 'fd', 'dd']]
+        name_axes = ['rotX', 'rotY', 'rotZ']
 
     if sensor == 'Accelerometer':
         data_df = pd.read_csv(acc_file)
         data_df = data_df[['Unixtime', 'accX', 'accY', 'accZ', 'fd', 'dd']]
+        name_axes = ['accX', 'accY', 'accZ']
 
     data_df['fd_dd'] = data_df['fd'] + data_df['dd'] 
-    data_df = data_df[['accX', 'accY', 'accZ', 'fd_dd']]
+    data_df = data_df[name_axes + ['fd_dd']]
 
     print(len(data_df))
 
@@ -117,23 +127,21 @@ for sensor in sensors:
     start = time.time()
 
 
-    ##--------------------------------------------------------------------------------------
+    # #--------------------------------------------------------------------------------------
     # # SAVE COLUMN NAMES IN FILE
-    # # Calculate features for frame
     # for counter in range(0,len(M)-frame_size,step_size):
-    #     print(counter)
-    #     savename = os.path.join(feat_folder, meal, 'feat_rec12_label_win'+str(FRAME_SIZE_SEC)+'_names.txt')
+    #     # print(counter)
+    #     savename = os.path.join(feat_folder, meal, sensor+'_feat_rec12_label_win'+str(FRAME_SIZE_SEC)+'_names.txt')
     #     fw = open(savename, 'w')
     #     for axis in range(number_of_inputs):
     #         V = M[counter:counter+frame_size, axis]
     #         names1 = gen_feat_rec_name(V, 4, 1)
     #         names2 = gen_feat_rec_name(V, 4, 2)
     #         names = names1 + names2
-    #         print(names)
+    #         # print(names)
     #         for item in names:
-    #             fw.write(name_axes[axis]+"_%s\n" % item)
-    #     exit()
-    ##--------------------------------------------------------------------------------------
+    #            fw.write(name_axes[axis]+"_%s\n" % item)
+    # #--------------------------------------------------------------------------------------
 
 
     # Calculate features for frame
@@ -142,23 +150,36 @@ for sensor in sensors:
         for axis in range(number_of_inputs):
 
             V = M[counter:counter+frame_size, axis]
-            # V_D = savgol_filter(V, window_length=11, polyorder=2, deriv=0)
-            # get the derivative/slope of signal
-            Y_D = savgol_filter(V, window_length=11, polyorder=2, deriv=1)
 
-            # get the harr feature 1, 2 and 3
-            # H1 = gen_feat_rec(Y_D, stride = 4, rec = 1)
-            # H2 = gen_feat_rec(Y_D, stride = 4, rec = 2)
-            # H3 = gen_feat_rec(Y_D, stride = 4, rec = 3)
+            # raw signal of gyro and accel.  filename: accXYZ_label_win, gyrXYZ_label_win
+            if FEATURE_CATEGORY == 0:
+                V_D = savgol_filter(V, window_length=11, polyorder=2, deriv=0)
+                if axis == 0:
+                    ROW = V.reshape((1,-1))
+                else:
+                    ROW = np.hstack((ROW, V.reshape((1,-1))))
 
-            if axis == 0:
-                # ROW = np.hstack((H1, H2))
-                # ROW = V.reshape((1,-1))
-                ROW = Y_D.reshape((1,-1))
-            else:
-                # ROW = np.hstack((ROW, H1, H2))
-                # ROW = np.hstack((ROW, V.reshape((1,-1))))
-                ROW = np.hstack((ROW, Y_D.reshape((1,-1))))
+            # derivative of gyro and accel. filename: devGyrXYZ_label_winX, devAccXYZ_label_winX
+            if FEATURE_CATEGORY == 1:
+                # get the derivative/slope of signal
+                Y_D = savgol_filter(V, window_length=11, polyorder=2, deriv=1)
+                if axis == 0:
+                    ROW = Y_D.reshape((1,-1))
+                else:
+                    ROW = np.hstack((ROW, Y_D.reshape((1,-1))))
+
+            # haar feature of derivative of gyro and accel. filename: feat_rec12_label_winX
+            if FEATURE_CATEGORY == 2:
+                Y_D = savgol_filter(V, window_length=11, polyorder=2, deriv=1)
+                # get the harr feature 1, 2 and 3
+                H1 = gen_feat_rec(Y_D, stride = 4, rec = 1)
+                H2 = gen_feat_rec(Y_D, stride = 4, rec = 2)
+                # H3 = gen_feat_rec(Y_D, stride = 4, rec = 3)
+
+                if axis == 0:
+                    ROW = np.hstack((H1, H2))
+                else:
+                    ROW = np.hstack((ROW, H1, H2))
 
 
         # # ----------------------------- Label -------------------------------------
@@ -180,9 +201,28 @@ for sensor in sensors:
             if not first_time_flag:
                 print(V_T2)
                 print(V_T2.shape)
+
+                # raw signal of gyro and accel.  filename: accXYZ_label_win, gyrXYZ_label_win
+                if FEATURE_CATEGORY == 0:
+                    if sensor == 'Gyroscope':
+                        savename = 'groXYZ_label_win'+str(FRAME_SIZE_SEC)+'_'+str(int(counter/SAVE_BATCH))+'.txt'
+                    if sensor == 'Accelerometer':
+                        savename = 'accXYZ_label_win'+str(FRAME_SIZE_SEC)+'_'+str(int(counter/SAVE_BATCH))+'.txt'
+
+                # derivative of gyro and accel. filename: devGyrXYZ_label_winX, devAccXYZ_label_winX
+                if FEATURE_CATEGORY == 1:
+                    if sensor == 'Gyroscope':
+                        savename = 'devGyrXYZ_label_win'+str(FRAME_SIZE_SEC)+'_'+str(int(counter/SAVE_BATCH))+'.txt'
+                    if sensor == 'Accelerometer':
+                        savename = 'devAccXYZ_label_win'+str(FRAME_SIZE_SEC)+'_'+str(int(counter/SAVE_BATCH))+'.txt'
+
                 # savename = 'feat_rec12_label_win'+str(FRAME_SIZE_SEC)+'_'+str(int(counter/SAVE_BATCH))+'.txt'
-                # savename = 'accXYZ_label_win'+str(FRAME_SIZE_SEC)+'_'+str(int(counter/SAVE_BATCH))+'.txt'
-                savename = 'devAccXYZ_label_win'+str(FRAME_SIZE_SEC)+'_'+str(int(counter/SAVE_BATCH))+'.txt'
+                if FEATURE_CATEGORY == 2:
+                    if sensor == 'Gyroscope':
+                        savename = 'gyrXYZfeat_rec12_label_win'+str(FRAME_SIZE_SEC)+'_'+str(int(counter/SAVE_BATCH))+'.txt'
+                    if sensor == 'Accelerometer':
+                        savename = 'accXYZfeat_rec12_label_win'+str(FRAME_SIZE_SEC)+'_'+str(int(counter/SAVE_BATCH))+'.txt'
+
                 np.savetxt(os.path.join(feat_folder, meal, savename), V_T2, delimiter=",")
 
             V_T1 = R_T

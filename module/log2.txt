@@ -1,0 +1,758 @@
+
+Bad key "ckend" on line 1 in
+/Users/shibozhang/.matplotlib/matplotlibrc.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+XYPos: (22, 496)
+XYTrn shape: (91, 496)
+XYTest shape: (41, 496)
+  FPrev:  1
+  DPrev:  1
+
+============== STAGE:  0  ==============
+  number of feats: 1
+  clf thres:  10.2175338763
+  overall recall_pos:  0.375
+  overall false positive rate:  0.151515151515
+/Users/shibozhang/anaconda/lib/python3.6/site-packages/PASDAC-1.0.0-py3.6.egg/PASDAC/ml.py:51: RuntimeWarning: invalid value encountered in long_scalars
+/Users/shibozhang/anaconda/lib/python3.6/site-packages/PASDAC-1.0.0-py3.6.egg/PASDAC/ml.py:52: RuntimeWarning: invalid value encountered in long_scalars
+/Users/shibozhang/anaconda/lib/python3.6/site-packages/sklearn/metrics/classification.py:516: RuntimeWarning: invalid value encountered in double_scalars
+  mcc = cov_ytyp / np.sqrt(var_yt * var_yp)
+  clf thres:  8.21753387634
+  number of feats: 2
+  clf thres:  28.2922036532
+  overall recall_pos:  0.5
+  overall false positive rate:  0.121212121212
+  clf thres:  26.2922036532
+  clf thres:  24.2922036532
+  clf thres:  22.2922036532
+  clf thres:  20.2922036532
+  clf thres:  18.2922036532
+  clf thres:  16.2922036532
+  number of feats: 3
+  clf thres:  44.5176059912
+  overall recall_pos:  0.5
+  overall false positive rate:  0.121212121212
+  clf thres:  42.5176059912
+  clf thres:  40.5176059912
+  clf thres:  38.5176059912
+  clf thres:  36.5176059912
+  clf thres:  34.5176059912
+  clf thres:  32.5176059912
+  clf thres:  30.5176059912
+  clf thres:  28.5176059912
+  clf thres:  26.5176059912
+  clf thres:  24.5176059912
+  clf thres:  22.5176059912
+  clf thres:  20.5176059912
+  clf thres:  18.5176059912
+  clf thres:  16.5176059912
+  clf thres:  14.5176059912
+  clf thres:  12.5176059912
+  clf thres:  10.5176059912
+  clf thres:  8.51760599121
+  number of feats: 4
+  clf thres:  32.9902981521
+  overall recall_pos:  0.375
+  overall false positive rate:  0.545454545455
+  clf thres:  30.9902981521
+  clf thres:  28.9902981521
+  clf thres:  26.9902981521
+  clf thres:  24.9902981521
+  clf thres:  22.9902981521
+  clf thres:  20.9902981521
+  clf thres:  18.9902981521
+  number of feats: 5
+  clf thres:  55.9141129469
+  overall recall_pos:  0.5
+  overall false positive rate:  0.121212121212
+  clf thres:  53.9141129469
+  clf thres:  51.9141129469
+  clf thres:  49.9141129469
+  clf thres:  47.9141129469
+  clf thres:  45.9141129469
+  clf thres:  43.9141129469
+  clf thres:  41.9141129469
+  clf thres:  39.9141129469
+  clf thres:  37.9141129469
+  clf thres:  35.9141129469
+  clf thres:  33.9141129469
+  clf thres:  31.9141129469
+  clf thres:  29.9141129469
+  clf thres:  27.9141129469
+  clf thres:  25.9141129469
+  clf thres:  23.9141129469
+  clf thres:  21.9141129469
+  clf thres:  19.9141129469
+  clf thres:  17.9141129469
+  clf thres:  15.9141129469
+  clf thres:  13.9141129469
+  clf thres:  11.9141129469
+  number of feats: 6
+  clf thres:  74.5143479474
+  overall recall_pos:  0.875
+  overall false positive rate:  0.333333333333
+  clf thres:  72.5143479474
+  clf thres:  70.5143479474
+  clf thres:  68.5143479474
+  clf thres:  66.5143479474
+  clf thres:  64.5143479474
+  clf thres:  62.5143479474
+  clf thres:  60.5143479474
+  clf thres:  58.5143479474
+  clf thres:  56.5143479474
+  clf thres:  54.5143479474
+  clf thres:  52.5143479474
+  clf thres:  50.5143479474
+  clf thres:  48.5143479474
+  clf thres:  46.5143479474
+  clf thres:  44.5143479474
+  clf thres:  42.5143479474
+  clf thres:  40.5143479474
+  clf thres:  38.5143479474
+  clf thres:  36.5143479474
+  clf thres:  34.5143479474
+  clf thres:  32.5143479474
+  clf thres:  30.5143479474
+  clf thres:  28.5143479474
+  clf thres:  26.5143479474
+  clf thres:  24.5143479474
+  clf thres:  22.5143479474
+  clf thres:  20.5143479474
+  clf thres:  18.5143479474
+  clf thres:  16.5143479474
+  clf thres:  14.5143479474
+  clf thres:  12.5143479474
+  clf thres:  10.5143479474
+  clf thres:  8.51434794742
+  clf thres:  6.51434794742
+  clf thres:  4.51434794742
+  clf thres:  2.51434794742
+  clf thres:  0.514347947421
+  number of feats: 7
+  clf thres:  73.2670058673
+  overall recall_pos:  0.875
+  overall false positive rate:  0.151515151515
+  clf thres:  71.2670058673
+  clf thres:  69.2670058673
+  clf thres:  67.2670058673
+  clf thres:  65.2670058673
+  clf thres:  63.2670058673
+  clf thres:  61.2670058673
+  clf thres:  59.2670058673
+  clf thres:  57.2670058673
+  clf thres:  55.2670058673
+  clf thres:  53.2670058673
+  clf thres:  51.2670058673
+  clf thres:  49.2670058673
+  clf thres:  47.2670058673
+  clf thres:  45.2670058673
+  clf thres:  43.2670058673
+  clf thres:  41.2670058673
+  clf thres:  39.2670058673
+  clf thres:  37.2670058673
+  clf thres:  35.2670058673
+  clf thres:  33.2670058673
+  clf thres:  31.2670058673
+  clf thres:  29.2670058673
+  clf thres:  27.2670058673
+  clf thres:  25.2670058673
+  clf thres:  23.2670058673
+  clf thres:  21.2670058673
+  clf thres:  19.2670058673
+  clf thres:  17.2670058673
+  clf thres:  15.2670058673
+  clf thres:  13.2670058673
+  clf thres:  11.2670058673
+  clf thres:  9.26700586729
+  clf thres:  7.26700586729
+  clf thres:  5.26700586729
+  number of feats: 8
+  clf thres:  63.3395608087
+  overall recall_pos:  0.875
+  overall false positive rate:  0.333333333333
+  clf thres:  61.3395608087
+  clf thres:  59.3395608087
+  clf thres:  57.3395608087
+  clf thres:  55.3395608087
+  clf thres:  53.3395608087
+  clf thres:  51.3395608087
+  clf thres:  49.3395608087
+  clf thres:  47.3395608087
+  clf thres:  45.3395608087
+  clf thres:  43.3395608087
+  clf thres:  41.3395608087
+  clf thres:  39.3395608087
+  clf thres:  37.3395608087
+  clf thres:  35.3395608087
+  clf thres:  33.3395608087
+  clf thres:  31.3395608087
+  clf thres:  29.3395608087
+  clf thres:  27.3395608087
+  clf thres:  25.3395608087
+  clf thres:  23.3395608087
+  clf thres:  21.3395608087
+  clf thres:  19.3395608087
+  clf thres:  17.3395608087
+  clf thres:  15.3395608087
+  clf thres:  13.3395608087
+  clf thres:  11.3395608087
+  clf thres:  9.33956080868
+  clf thres:  7.33956080868
+  clf thres:  5.33956080868
+  clf thres:  3.33956080868
+  clf thres:  1.33956080868
+  number of feats: 9
+  clf thres:  80.0330583675
+  overall recall_pos:  0.5
+  overall false positive rate:  0.0606060606061
+  clf thres:  78.0330583675
+  clf thres:  76.0330583675
+  clf thres:  74.0330583675
+  clf thres:  72.0330583675
+  clf thres:  70.0330583675
+  clf thres:  68.0330583675
+  clf thres:  66.0330583675
+  clf thres:  64.0330583675
+  clf thres:  62.0330583675
+  clf thres:  60.0330583675
+  clf thres:  58.0330583675
+  clf thres:  56.0330583675
+  clf thres:  54.0330583675
+  clf thres:  52.0330583675
+  clf thres:  50.0330583675
+  clf thres:  48.0330583675
+  clf thres:  46.0330583675
+  clf thres:  44.0330583675
+  clf thres:  42.0330583675
+  clf thres:  40.0330583675
+  clf thres:  38.0330583675
+  clf thres:  36.0330583675
+  clf thres:  34.0330583675
+  clf thres:  32.0330583675
+  clf thres:  30.0330583675
+  clf thres:  28.0330583675
+  clf thres:  26.0330583675
+  clf thres:  24.0330583675
+  clf thres:  22.0330583675
+  clf thres:  20.0330583675
+  clf thres:  18.0330583675
+  clf thres:  16.0330583675
+  clf thres:  14.0330583675
+  clf thres:  12.0330583675
+  clf thres:  10.0330583675
+  clf thres:  8.03305836748
+  clf thres:  6.03305836748
+  number of feats: 10
+  clf thres:  71.0385078909
+  overall recall_pos:  0.625
+  overall false positive rate:  0.0909090909091
+  clf thres:  69.0385078909
+  clf thres:  67.0385078909
+  clf thres:  65.0385078909
+  clf thres:  63.0385078909
+  clf thres:  61.0385078909
+  clf thres:  59.0385078909
+  clf thres:  57.0385078909
+  clf thres:  55.0385078909
+  clf thres:  53.0385078909
+  clf thres:  51.0385078909
+  clf thres:  49.0385078909
+  clf thres:  47.0385078909
+  clf thres:  45.0385078909
+  clf thres:  43.0385078909
+  clf thres:  41.0385078909
+  clf thres:  39.0385078909
+  clf thres:  37.0385078909
+  clf thres:  35.0385078909
+  clf thres:  33.0385078909
+  clf thres:  31.0385078909
+  number of feats: 11
+  clf thres:  59.4314981268
+  overall recall_pos:  0.625
+  overall false positive rate:  0.151515151515
+  clf thres:  57.4314981268
+  clf thres:  55.4314981268
+  clf thres:  53.4314981268
+  clf thres:  51.4314981268
+  clf thres:  49.4314981268
+  clf thres:  47.4314981268
+  clf thres:  45.4314981268
+  clf thres:  43.4314981268
+  clf thres:  41.4314981268
+  clf thres:  39.4314981268
+  clf thres:  37.4314981268
+  clf thres:  35.4314981268
+  clf thres:  33.4314981268
+  clf thres:  31.4314981268
+  clf thres:  29.4314981268
+  clf thres:  27.4314981268
+  clf thres:  25.4314981268
+  clf thres:  23.4314981268
+  clf thres:  21.4314981268
+  number of feats: 12
+  clf thres:  94.2530390124
+  overall recall_pos:  0.75
+  overall false positive rate:  0.151515151515
+  clf thres:  92.2530390124
+  clf thres:  90.2530390124
+  clf thres:  88.2530390124
+  clf thres:  86.2530390124
+  clf thres:  84.2530390124
+  clf thres:  82.2530390124
+  clf thres:  80.2530390124
+  clf thres:  78.2530390124
+  clf thres:  76.2530390124
+  clf thres:  74.2530390124
+  clf thres:  72.2530390124
+  clf thres:  70.2530390124
+  clf thres:  68.2530390124
+  clf thres:  66.2530390124
+  clf thres:  64.2530390124
+  clf thres:  62.2530390124
+  clf thres:  60.2530390124
+  clf thres:  58.2530390124
+  clf thres:  56.2530390124
+  clf thres:  54.2530390124
+  clf thres:  52.2530390124
+  clf thres:  50.2530390124
+  clf thres:  48.2530390124
+  clf thres:  46.2530390124
+  clf thres:  44.2530390124
+  clf thres:  42.2530390124
+  clf thres:  40.2530390124
+  clf thres:  38.2530390124
+  clf thres:  36.2530390124
+  clf thres:  34.2530390124
+  clf thres:  32.2530390124
+  clf thres:  30.2530390124
+  clf thres:  28.2530390124
+  clf thres:  26.2530390124
+  clf thres:  24.2530390124
+  clf thres:  22.2530390124
+  clf thres:  20.2530390124
+  clf thres:  18.2530390124
+  clf thres:  16.2530390124
+  clf thres:  14.2530390124
+  clf thres:  12.2530390124
+  clf thres:  10.2530390124
+  clf thres:  8.25303901243
+  number of feats: 13
+  clf thres:  61.7132871925
+  overall recall_pos:  0.625
+  overall false positive rate:  0.151515151515
+  clf thres:  59.7132871925
+  clf thres:  57.7132871925
+  clf thres:  55.7132871925
+  clf thres:  53.7132871925
+  clf thres:  51.7132871925
+  clf thres:  49.7132871925
+  clf thres:  47.7132871925
+  clf thres:  45.7132871925
+  clf thres:  43.7132871925
+  clf thres:  41.7132871925
+  clf thres:  39.7132871925
+  clf thres:  37.7132871925
+  clf thres:  35.7132871925
+  clf thres:  33.7132871925
+  clf thres:  31.7132871925
+  clf thres:  29.7132871925
+  clf thres:  27.7132871925
+  clf thres:  25.7132871925
+  clf thres:  23.7132871925
+  clf thres:  21.7132871925
+  clf thres:  19.7132871925
+  clf thres:  17.7132871925
+  clf thres:  15.7132871925
+  clf thres:  13.7132871925
+  clf thres:  11.7132871925
+  clf thres:  9.71328719247
+  clf thres:  7.71328719247
+  clf thres:  5.71328719247
+  clf thres:  3.71328719247
+  clf thres:  1.71328719247
+  FPrev:  0.484848484848
+  DPrev:  1.0
+
+============== STAGE:  1  ==============
+  number of feats: 14
+DEBUG: thres_list:  [1.7132871924653159]
+DEBUG: T_list:  [100]
+  clf thres:  69.0064014482
+  clf thres:  69.0064014482
+  overall recall_pos:  0.875
+  overall false positive rate:  0.181818181818
+  clf thres:  67.0064014482
+  clf thres:  65.0064014482
+  clf thres:  63.0064014482
+  clf thres:  61.0064014482
+  clf thres:  59.0064014482
+  clf thres:  57.0064014482
+  clf thres:  55.0064014482
+  clf thres:  53.0064014482
+  FPrev:  0.242424242424
+  DPrev:  1.0
+
+============== STAGE:  2  ==============
+  number of feats: 15
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  50.5034842215
+  clf thres:  50.5034842215
+  overall recall_pos:  0.5
+  overall false positive rate:  0.0606060606061
+  clf thres:  48.5034842215
+  clf thres:  46.5034842215
+  clf thres:  44.5034842215
+  clf thres:  42.5034842215
+  clf thres:  40.5034842215
+  clf thres:  38.5034842215
+  clf thres:  36.5034842215
+  clf thres:  34.5034842215
+  clf thres:  32.5034842215
+  clf thres:  30.5034842215
+  clf thres:  28.5034842215
+  clf thres:  26.5034842215
+  clf thres:  24.5034842215
+  clf thres:  22.5034842215
+  clf thres:  20.5034842215
+  clf thres:  18.5034842215
+  clf thres:  16.5034842215
+  clf thres:  14.5034842215
+  clf thres:  12.5034842215
+  clf thres:  10.5034842215
+  clf thres:  8.5034842215
+  clf thres:  6.5034842215
+  clf thres:  4.5034842215
+  clf thres:  2.5034842215
+  clf thres:  0.503484221497
+  number of feats: 16
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  79.9859268661
+  clf thres:  79.9859268661
+  overall recall_pos:  0.5
+  overall false positive rate:  0.0606060606061
+  clf thres:  77.9859268661
+  clf thres:  75.9859268661
+  clf thres:  73.9859268661
+  clf thres:  71.9859268661
+  clf thres:  69.9859268661
+  clf thres:  67.9859268661
+  clf thres:  65.9859268661
+  clf thres:  63.9859268661
+  clf thres:  61.9859268661
+  clf thres:  59.9859268661
+  clf thres:  57.9859268661
+  clf thres:  55.9859268661
+  clf thres:  53.9859268661
+  clf thres:  51.9859268661
+  clf thres:  49.9859268661
+  clf thres:  47.9859268661
+  clf thres:  45.9859268661
+  clf thres:  43.9859268661
+  clf thres:  41.9859268661
+  clf thres:  39.9859268661
+  clf thres:  37.9859268661
+  clf thres:  35.9859268661
+  clf thres:  33.9859268661
+  clf thres:  31.9859268661
+  clf thres:  29.9859268661
+  clf thres:  27.9859268661
+  clf thres:  25.9859268661
+  clf thres:  23.9859268661
+  clf thres:  21.9859268661
+  clf thres:  19.9859268661
+  number of feats: 17
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  55.1217593187
+  clf thres:  55.1217593187
+  overall recall_pos:  0.625
+  overall false positive rate:  0.151515151515
+  clf thres:  53.1217593187
+  clf thres:  51.1217593187
+  clf thres:  49.1217593187
+  clf thres:  47.1217593187
+  clf thres:  45.1217593187
+  clf thres:  43.1217593187
+  clf thres:  41.1217593187
+  clf thres:  39.1217593187
+  clf thres:  37.1217593187
+  clf thres:  35.1217593187
+  clf thres:  33.1217593187
+  clf thres:  31.1217593187
+  number of feats: 18
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  90.5517987192
+  clf thres:  90.5517987192
+  overall recall_pos:  0.5
+  overall false positive rate:  0.0606060606061
+  clf thres:  88.5517987192
+  clf thres:  86.5517987192
+  clf thres:  84.5517987192
+  clf thres:  82.5517987192
+  clf thres:  80.5517987192
+  clf thres:  78.5517987192
+  clf thres:  76.5517987192
+  clf thres:  74.5517987192
+  clf thres:  72.5517987192
+  clf thres:  70.5517987192
+  clf thres:  68.5517987192
+  clf thres:  66.5517987192
+  clf thres:  64.5517987192
+  clf thres:  62.5517987192
+  clf thres:  60.5517987192
+  clf thres:  58.5517987192
+  clf thres:  56.5517987192
+  clf thres:  54.5517987192
+  clf thres:  52.5517987192
+  clf thres:  50.5517987192
+  clf thres:  48.5517987192
+  clf thres:  46.5517987192
+  clf thres:  44.5517987192
+  clf thres:  42.5517987192
+  clf thres:  40.5517987192
+  clf thres:  38.5517987192
+  clf thres:  36.5517987192
+  clf thres:  34.5517987192
+  clf thres:  32.5517987192
+  clf thres:  30.5517987192
+  clf thres:  28.5517987192
+  number of feats: 19
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  56.9069050658
+/Users/shibozhang/anaconda/lib/python3.6/site-packages/PASDAC-1.0.0-py3.6.egg/PASDAC/ml.py:52: RuntimeWarning: invalid value encountered in double_scalars
+  clf thres:  56.9069050658
+  overall recall_pos:  0.0
+  overall false positive rate:  0.030303030303
+  clf thres:  54.9069050658
+  clf thres:  52.9069050658
+  clf thres:  50.9069050658
+  clf thres:  48.9069050658
+  clf thres:  46.9069050658
+  clf thres:  44.9069050658
+  clf thres:  42.9069050658
+  clf thres:  40.9069050658
+  clf thres:  38.9069050658
+  clf thres:  36.9069050658
+  clf thres:  34.9069050658
+  clf thres:  32.9069050658
+  clf thres:  30.9069050658
+  clf thres:  28.9069050658
+  clf thres:  26.9069050658
+  clf thres:  24.9069050658
+  clf thres:  22.9069050658
+  clf thres:  20.9069050658
+  number of feats: 20
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  55.6045650968
+  clf thres:  55.6045650968
+  overall recall_pos:  0.5
+  overall false positive rate:  0.0606060606061
+  clf thres:  53.6045650968
+  clf thres:  51.6045650968
+  clf thres:  49.6045650968
+  clf thres:  47.6045650968
+  clf thres:  45.6045650968
+  clf thres:  43.6045650968
+  clf thres:  41.6045650968
+  clf thres:  39.6045650968
+  clf thres:  37.6045650968
+  clf thres:  35.6045650968
+  clf thres:  33.6045650968
+  clf thres:  31.6045650968
+  clf thres:  29.6045650968
+  clf thres:  27.6045650968
+  clf thres:  25.6045650968
+  number of feats: 21
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  56.3533362765
+  clf thres:  56.3533362765
+  overall recall_pos:  0.25
+  overall false positive rate:  0.0606060606061
+  clf thres:  54.3533362765
+  clf thres:  52.3533362765
+  clf thres:  50.3533362765
+  clf thres:  48.3533362765
+  clf thres:  46.3533362765
+  number of feats: 22
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  60.9391162447
+  clf thres:  60.9391162447
+  overall recall_pos:  0.375
+  overall false positive rate:  0.121212121212
+  clf thres:  58.9391162447
+  clf thres:  56.9391162447
+  clf thres:  54.9391162447
+  clf thres:  52.9391162447
+  clf thres:  50.9391162447
+  clf thres:  48.9391162447
+  clf thres:  46.9391162447
+  clf thres:  44.9391162447
+  clf thres:  42.9391162447
+  clf thres:  40.9391162447
+  clf thres:  38.9391162447
+  clf thres:  36.9391162447
+  clf thres:  34.9391162447
+  clf thres:  32.9391162447
+  clf thres:  30.9391162447
+  clf thres:  28.9391162447
+  clf thres:  26.9391162447
+  number of feats: 23
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  71.770852155
+  clf thres:  71.770852155
+  overall recall_pos:  0.5
+  overall false positive rate:  0.0606060606061
+  clf thres:  69.770852155
+  clf thres:  67.770852155
+  clf thres:  65.770852155
+  clf thres:  63.770852155
+  clf thres:  61.770852155
+  clf thres:  59.770852155
+  clf thres:  57.770852155
+  clf thres:  55.770852155
+  clf thres:  53.770852155
+  clf thres:  51.770852155
+  clf thres:  49.770852155
+  clf thres:  47.770852155
+  clf thres:  45.770852155
+  clf thres:  43.770852155
+  clf thres:  41.770852155
+  clf thres:  39.770852155
+  clf thres:  37.770852155
+  clf thres:  35.770852155
+  clf thres:  33.770852155
+  clf thres:  31.770852155
+  clf thres:  29.770852155
+  clf thres:  27.770852155
+  clf thres:  25.770852155
+  clf thres:  23.770852155
+  clf thres:  21.770852155
+  clf thres:  19.770852155
+  clf thres:  17.770852155
+  clf thres:  15.770852155
+  clf thres:  13.770852155
+  clf thres:  11.770852155
+  number of feats: 24
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  61.349204962
+  clf thres:  61.349204962
+  overall recall_pos:  0.5
+  overall false positive rate:  0.0606060606061
+  clf thres:  59.349204962
+  clf thres:  57.349204962
+  clf thres:  55.349204962
+  clf thres:  53.349204962
+  clf thres:  51.349204962
+  clf thres:  49.349204962
+  clf thres:  47.349204962
+  clf thres:  45.349204962
+  clf thres:  43.349204962
+  clf thres:  41.349204962
+  clf thres:  39.349204962
+  clf thres:  37.349204962
+  clf thres:  35.349204962
+  number of feats: 25
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  79.2047091804
+  clf thres:  79.2047091804
+  overall recall_pos:  0.625
+  overall false positive rate:  0.030303030303
+  clf thres:  77.2047091804
+  clf thres:  75.2047091804
+  clf thres:  73.2047091804
+  clf thres:  71.2047091804
+  clf thres:  69.2047091804
+  clf thres:  67.2047091804
+  clf thres:  65.2047091804
+  clf thres:  63.2047091804
+  clf thres:  61.2047091804
+  clf thres:  59.2047091804
+  clf thres:  57.2047091804
+  clf thres:  55.2047091804
+  clf thres:  53.2047091804
+  clf thres:  51.2047091804
+  clf thres:  49.2047091804
+  clf thres:  47.2047091804
+  clf thres:  45.2047091804
+  clf thres:  43.2047091804
+  clf thres:  41.2047091804
+  clf thres:  39.2047091804
+  clf thres:  37.2047091804
+  clf thres:  35.2047091804
+  clf thres:  33.2047091804
+  clf thres:  31.2047091804
+  clf thres:  29.2047091804
+  clf thres:  27.2047091804
+  number of feats: 26
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  82.2720158991
+  clf thres:  82.2720158991
+  overall recall_pos:  0.5
+  overall false positive rate:  0.0606060606061
+  clf thres:  80.2720158991
+  clf thres:  78.2720158991
+  clf thres:  76.2720158991
+  clf thres:  74.2720158991
+  clf thres:  72.2720158991
+  clf thres:  70.2720158991
+  clf thres:  68.2720158991
+  clf thres:  66.2720158991
+  clf thres:  64.2720158991
+  clf thres:  62.2720158991
+  clf thres:  60.2720158991
+  clf thres:  58.2720158991
+  clf thres:  56.2720158991
+  clf thres:  54.2720158991
+  clf thres:  52.2720158991
+  clf thres:  50.2720158991
+  clf thres:  48.2720158991
+  clf thres:  46.2720158991
+  clf thres:  44.2720158991
+  clf thres:  42.2720158991
+  clf thres:  40.2720158991
+  clf thres:  38.2720158991
+  clf thres:  36.2720158991
+  clf thres:  34.2720158991
+  clf thres:  32.2720158991
+  clf thres:  30.2720158991
+  clf thres:  28.2720158991
+  clf thres:  26.2720158991
+  clf thres:  24.2720158991
+  number of feats: 27
+DEBUG: thres_list:  [1.7132871924653159, 53.006401448219208]
+DEBUG: T_list:  [100, 100]
+  clf thres:  65.6855072077
+  clf thres:  65.6855072077
+  overall recall_pos:  0.625
+  overall false positive rate:  0.0606060606061
+  clf thres:  63.6855072077
+  clf thres:  61.6855072077
+  clf thres:  59.6855072077
+  clf thres:  57.6855072077
+  clf thres:  55.6855072077
+  clf thres:  53.6855072077
+  clf thres:  51.6855072077
+  clf thres:  49.6855072077
+  clf thres:  47.6855072077
+XYPos: (22, 496)
+XYTrn shape: (91, 496)
+XYTest shape: (41, 496)
+thres_list:  [1.7132871924653159, 53.006401448219208, 47.685507207726673]
+Recall(postive) for every stage:  [1.0, 1.0, 1.0]
+False positive rate for every stage:  [0.48484848484848486, 0.5, 0.25]
+Overall recall(postive):  1.0
+Overall false positive rate:  0.0606060606061
+[Finished in 94.6s]
