@@ -136,11 +136,11 @@ class Cascaded(object):
         print('XYTest shape:', XYTest.shape)
 
 
-        self.cascade_stages=[]
-        count=0
+        self.cascade_stages = []
+        count = 0
         for f,d, T in self.parameter:
-            stage=Stage(f, d, T, [], self.model, [], count)
-            count+=1
+            stage = Stage(f, d, T, [], self.model, [], count)
+            count += 1 
             self.cascade_stages.append(stage)
 
         # get all_feat_list

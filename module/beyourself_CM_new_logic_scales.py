@@ -12,7 +12,8 @@ from PASDAC.util import list_files_in_directory, create_folder
 from cascade_func import build_strongclf_def_thres, load_strongclf_def_thres, load_strongclf_adj_thres,\
                             update_XY_with_N_feats, test_cascade_all_stages_keep_true_samples,\
                             update_trnset_with_FP_true_samples, test_cascade_all_stages_real_run,\
-                            update_trnset_with_P_samples, read_haar_feat_random_select_samples
+                            update_trnset_with_P_samples, read_haar_feat_random_select_samples,\
+                            read_haar_feat_raw_separate_files
 
 
 
@@ -182,7 +183,7 @@ if __name__ == "__main__":
     REC = 12
     WINSIZE = 2
 
-    XY = read_haar_feat_random_select_samples(meals, REC, WINSIZE, ratio = 5, use_seed = 1)
+    XY = read_haar_feat_raw_separate_files('m0824_1', REC, WINSIZE)
 
     model = Cascaded(
         stage_parameter=[(0.5, 0.9, 100), (0.5, 0.9, 100), (0.5, 0.9, 100)],
@@ -192,21 +193,23 @@ if __name__ == "__main__":
 
     T_list, all_feat_list, n_feats_list, beta_list, thres_list, path_list = model.fit(XY)
 
-    XYPos =  XY[np.where(XY[:,-1]==1)[0],:]
-    XYNeg =  XY[np.where(XY[:,-1]==0)[0],:]
-    print('XYPos:',XYPos.shape)
+    XYTest = read_haar_feat_raw_separate_files('m0824_2', REC, WINSIZE)
 
-    XYPosTrn, XYPosTest = tt_split(XYPos, 0.7)
-    XYNegTrn, XYNegTest = tt_split(XYNeg, 0.7)
+    # XYPos =  XY[np.where(XY[:,-1]==1)[0],:]
+    # XYNeg =  XY[np.where(XY[:,-1]==0)[0],:]
+    # print('XYPos:',XYPos.shape)
 
-    P = XYPosTrn
-    N = XYNegTrn
+    # XYPosTrn, XYPosTest = tt_split(XYPos, 0.7)
+    # XYNegTrn, XYNegTest = tt_split(XYNeg, 0.7)
 
-    XYTrn = np.vstack((P, N))
-    print('XYTrn shape:', XYTrn.shape)
-    XYTest = np.vstack((XYPosTest,XYNegTest))
-    print('XYTest shape:', XYTest.shape)
-    print('thres_list: ', thres_list)
+    # P = XYPosTrn
+    # N = XYNegTrn
+
+    # XYTrn = np.vstack((P, N))
+    # print('XYTrn shape:', XYTrn.shape)
+    # XYTest = np.vstack((XYPosTest,XYNegTest))
+    # print('XYTest shape:', XYTest.shape)
+    # print('thres_list: ', thres_list)
 
     model.test(XYTest, T_list, all_feat_list, n_feats_list, beta_list, thres_list, path_list)
 

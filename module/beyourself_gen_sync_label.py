@@ -72,6 +72,7 @@ def adjust_annot_path(subj, subj_df, i, annot_file):
     return annot_file
 
 
+
 def parse_videoname_from_path(string):
     print(string)
     RegExr = "DVR___\d+-\d+-\d+_\d+.\d+.\d+.AVI"
@@ -82,6 +83,7 @@ def parse_videoname_from_path(string):
     else:
         print('Video path error')
         return 0
+
 
 
 def parse_timestamp_from_videoname(string):
@@ -96,6 +98,7 @@ def parse_timestamp_from_videoname(string):
         return 0
 
 
+
 def parse_timestamp_from_RelStart(string):
     STARTTIME_FORMAT = '%H:%M:%S'
     t = datetime.strptime(string, STARTTIME_FORMAT)
@@ -103,9 +106,16 @@ def parse_timestamp_from_RelStart(string):
     return delta
 
 
+
 def parse_timestamp_from_AbsStart(string):
-    STARTTIME_FORMAT = '%m/%d/%y %H:%M:%S'
-    return datetime.strptime(string, STARTTIME_FORMAT)
+    STARTTIME_FORMAT_WO_CENTURY = '%m/%d/%y %H:%M:%S'
+    STARTTIME_FORMAT_W_CENTURY = '%m/%d/%Y %H:%M:%S'
+    try:
+        dt = datetime.strptime(string, STARTTIME_FORMAT_WO_CENTURY)
+    except:
+        dt = datetime.strptime(string, STARTTIME_FORMAT_W_CENTURY)
+
+    return dt
 
 
 
@@ -120,25 +130,34 @@ def conv_ELAN_to_SYNC(ELAN_df,video_starttime):
 
 
 
-subjs = ['P120']#  'P103','P105','P107','P108','P109','P110','P111','P112','P114','P115','P116','P118',
+subjs = ['P116']#  'P103','P105','P107','P108','P109','P110','P111','P112','P114','P115','P116','P118',
 
 first_time_flg = 1
 
-all_feats_df = pd.DataFrame()
+meals = [\
+'m0815_1',\
+'m0815_2',\
+'m0821_1',\
+'m0821_2'\
+]
 
-
+drift_sec = 1.4
 
 for subj in subjs:
     print(subj)
     path = '/Users/shibozhang/Documents/Beyourself/beyourself-label/BeYourself/CLEAN/'+subj+'/labeling_'+subj+'.csv'
     
-
     subj_df = read_label_summary(path)
 
-    existing_meals = get_immediate_subdirectories('/Volumes/SHIBO/BeYourself/BeYourself/CLEAN/P120/visualize/SYNC_necklace/')
+    # existing_meals = get_immediate_subdirectories('/Volumes/SHIBO/BeYourself/BeYourself/CLEAN/'+subj+'/visualize/SYNC_necklace/')
 
-    for i in range(len(subj_df)):
+    # for i in range(len(subj_df)):
+    inds = []
+    for meal in meals:
+        inds.append(subj_df.ID[subj_df.ID==meal].index.tolist()[0])
+    print(inds)
 
+    for i in inds:
         meal = subj_df['ID'].iloc[i]
         print(meal)
 
@@ -159,25 +178,28 @@ for subj in subjs:
         ELAN_annot_df = ELAN_annot_df[(ELAN_annot_df['start']>starttime) & (ELAN_annot_df['end']<endtime)]
         ELAN_annot_df = ELAN_annot_df.sort_values('start')
 
-        # print(ELAN_annot_df)
+        print(ELAN_annot_df)
 
         video_starttime = AbsStart - RelStart
+        video_starttime = video_starttime + timedelta(seconds = drift_sec) 
+
         SYNC_annot_df = conv_ELAN_to_SYNC(ELAN_annot_df,video_starttime)
 
-        SYNC_FG_path = '/Volumes/SHIBO/BeYourself/BeYourself/CLEAN/'+subj+'/visualize/SYNC_FG/'+meal
+
+        SYNC_FG_path = '/Volumes/SHIBO/BeYourself/BeYourself/CLEAN/'+subj+'/visualize/SYNC_meal/'+meal
         create_folder(SYNC_FG_path)
         print(SYNC_annot_df)
 
-        write_SYNC(SYNC_annot_df, os.path.join(SYNC_FG_path,'labelFG.json'))
+        write_SYNC(SYNC_annot_df, os.path.join(SYNC_FG_path,'labelFG_synced.json'))
 
-        SYNC_necklace_path = '/Volumes/SHIBO/BeYourself/BeYourself/CLEAN/'+subj+'/visualize/SYNC_necklace/'+meal
+        # SYNC_necklace_path = '/Volumes/SHIBO/BeYourself/BeYourself/CLEAN/'+subj+'/visualize/SYNC_necklace/'+meal
         
-        if meal in existing_meals:
-            copyfile(os.path.join(SYNC_FG_path,'labelFG.json'), \
-                 os.path.join(SYNC_necklace_path,'labelFG.json'))
+        # if meal in existing_meals:
+        #     copyfile(os.path.join(SYNC_FG_path,'labelFG.json'), \
+        #          os.path.join(SYNC_necklace_path,'labelFG.json'))
 
 
-        
+
 
 
 

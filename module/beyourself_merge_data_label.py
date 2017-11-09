@@ -171,7 +171,7 @@ def merge_data_label(annotDf, df_test):
 
 
 
-subjs = ['P120']#  'P103','P105','P107','P108','P109','P110','P111','P112','P114','P115','P116','P118',
+subj = 'P116'#  'P103','P105','P107','P108','P109','P110','P111','P112','P114','P115','P116','P118',
 
 first_time_flg = 1
 
@@ -182,22 +182,23 @@ out_folder = '/Users/shibozhang/Documents/Beyourself/beyourself-label/BeYourself
 
 
 CLEAN_FOLDER = '/Volumes/SHIBO/BeYourself/BeYourself/CLEAN'
-raw_video_folder = os.path.join(CLEAN_FOLDER, 'P120/visualize/SYNC_necklace')
+raw_video_folder = os.path.join(CLEAN_FOLDER, subj,'visualize/SYNC_meal')
 
 
 PROC_FOLDER = '/Volumes/SHIBO/BeYourself/BeYourself/PROCESS'
-proc_subj_folder = os.path.join(PROC_FOLDER, 'P120/WRIST')
+proc_subj_folder = os.path.join(PROC_FOLDER, subj,'WRIST')
 
 
 # meal_list = get_immediate_subdirectories(raw_video_folder)
 
 # meals = ['m0824_1']
-meals = ['m0824_2']
+meals = ['m0815_1','m0815_2','m0821_1','m0821_2']
+
 
 for meal in meals:    
 
     meal_folder = os.path.join(raw_video_folder, meal)
-    label_file = os.path.join(meal_folder, 'labelFG.json')
+    label_file = os.path.join(meal_folder, 'labelFG_synced.json')
 
     save_folder = os.path.join(proc_subj_folder, meal, 'data_label')
     maybe_create_folder(save_folder)

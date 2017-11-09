@@ -3,7 +3,7 @@ import re
 import random
 import numpy as np
 from sklearn import preprocessing
-from PASDAC.util import rm_files_in_folder
+from PASDAC.util import rm_files_in_folder, list_files_in_directory
 from cascade_util import __pred_weakclf, __weval, __w_beta_update, __save_weakclf, __load__weakclf
 from PASDAC.ml import calc_cm_rcall
 import operator
@@ -11,18 +11,18 @@ import functools
 
 
 
-def read_raw_acc_separate_files(meal, rec, winsize):
-    folder = os.path.join('/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/haar_feature/', meal)
-    allfiles = list_files_in_directory(folder)
-    file_header = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_'
-    RegExr= file_header+'\d+.txt'
-    matches = [re.search(RegExr, f) for f in allfiles]
-    files = ([m.group() for m in matches if m])
+# def read_raw_acc_separate_files(meal, rec, winsize):
+#     folder = os.path.join('/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/haar_feature/', meal)
+#     allfiles = list_files_in_directory(folder)
+#     file_header = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_'
+#     RegExr= file_header+'\d+.txt'
+#     matches = [re.search(RegExr, f) for f in allfiles]
+#     files = ([m.group() for m in matches if m])
 
-    # files = [files[0], files[1]]
-    XY = [np.loadtxt(os.path.join(folder, file), delimiter=",", unpack=False) for file in files]
-    XY = np.vstack(XY)
-    return XY
+#     # files = [files[0], files[1]]
+#     XY = [np.loadtxt(os.path.join(folder, file), delimiter=",", unpack=False) for file in files]
+#     XY = np.vstack(XY)
+#     return XY
 
 
 
