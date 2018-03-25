@@ -3,11 +3,70 @@ import re
 import random
 import numpy as np
 from sklearn import preprocessing
-from PASDAC.util import rm_files_in_folder, list_files_in_directory
 from cascade_util import __pred_weakclf, __weval, __w_beta_update, __save_weakclf, __load__weakclf
-from PASDAC.ml import calc_cm_rcall
 import operator
 import functools
+import pandas as pd
+from sklearn.metrics import *
+from sklearn.metrics import cohen_kappa_score
+
+
+def calc_cm_rcall(y_test, y_pred):#
+
+    ct = pd.crosstab(y_test, y_pred, rownames=['True'], colnames=['Predicted'], margins=True)
+
+    # Compute confusion matrix
+    cm = confusion_matrix(y_test, y_pred)
+    
+    accuracy = sum(cm[i,i] for i in range(len(set(y_test))))/sum(sum(cm[i] for i in range(len(set(y_test)))))
+    recall_all = sum(cm[i,i]/sum(cm[i,j] for j in range(len(set(y_test)))) for i in range(len(set(y_test))))/(len(set(y_test)))
+    precision_all = sum(cm[i,i]/sum(cm[j,i] for j in range(len(set(y_test)))) for i in range(len(set(y_test))))/(len(set(y_test)))
+    fscore_all = sum(2*(cm[i,i]/sum(cm[i,j] for j in range(len(set(y_test)))))*(cm[i,i]/sum(cm[j,i] for j in range(len(set(y_test)))))/(cm[i,i]/sum(cm[i,j] for j in range(len(set(y_test))))+cm[i,i]/sum(cm[j,i] for j in range(len(set(y_test))))) for i in range(len(set(y_test))))/len(set(y_test))
+    
+    TP = cm[1,1]
+    FP = cm[0,1]
+    TN = cm[0,0]
+    FN = cm[1,0]
+    # Precision for Positive = TP/(TP + FP)
+    prec_pos = TP/(TP + FP)
+
+    recall_pos = TP/(TP+FN)
+
+    # F1 score for positive = 2 * precision * recall / (precision + recall)….or it can be F1= 2*TP/(2*TP + FP+ FN)
+    f1_pos = 2*TP/(TP*2 + FP+ FN)
+    # TPR = TP/(TP+FN)
+    TPR = cm[1,1]/sum(cm[1,j] for j in range(len(set(y_test))))
+    # FPR = FP/(FP+TN)
+    FPR = cm[0,1]/sum(cm[0,j] for j in range(len(set(y_test))))
+    # specificity = TN/(FP+TN)
+    Specificity = cm[0,0]/sum(cm[0,j] for j in range(len(set(y_test))))
+    MCC = matthews_corrcoef(y_test, y_pred)
+    CKappa = cohen_kappa_score(y_test, y_pred)
+
+    # w_acc = (TP*20 + TN)/ [(TP+FN)*20 + (TN+FP)] if 20:1 ratio of non-feeding to feeding
+    ratio = (TN+FP)/(TP+FN)
+    w_acc = (TP*ratio + TN)/ ((TP+FN)*ratio + (TN+FP))
+
+    return prec_pos, recall_pos, f1_pos, TPR, FPR, Specificity, MCC, CKappa, w_acc, cm
+
+
+def rm_files_in_folder(folder):
+#     remove files in folder
+    import os, shutil
+    for the_file in os.listdir(folder):
+        file_path = os.path.join(folder, the_file)
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path): 
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print(e)
+
+
+def list_files_in_directory(mypath):
+    
+    return [f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath, f))]
 
 
 
@@ -406,6 +465,7 @@ def test_cascade_all_stages_keep_true_samples(XY, T_list, all_feat_list, n_feats
 
     F_final = functools.reduce(operator.mul, F_list, 1)
     D_final = functools.reduce(operator.mul, D_list, 1)
+
     return F_list, D_list, F_final, D_final, XY
 
 
@@ -437,4 +497,5 @@ def test_cascade_all_stages_real_run(XY, T_list, all_feat_list, n_feats_list, be
 
     F_final = functools.reduce(operator.mul, F_list, 1)
     D_final = functools.reduce(operator.mul, D_list, 1)
+
     return F_list, D_list, F_final, D_final
