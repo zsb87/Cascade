@@ -1,3 +1,30 @@
+# 
+# Question: Algorithm:1. in Adaboost framework, in for loop, step2: "2. For each feature, train a classifier which is restricted to using a single feature. 
+#                       The error is evaluated with respect to w". Question is when I train the weak classifier, 
+#                       should I take the weights into my training process? 
+# 
+#                       -- In my implementation, the weight is used in training
+# 
+#                     2.[IMPORTANT] in Cascade framework, 'Decrease threshold for the i-th classifier until the current cascaded classifier has a detection rate of at least d*D_{i-1}
+#                       when decreasing the threshold, what is the termination condition.
+# 
+# 
+# 
+#                     3. what if the base classfiers have different direction, for example one has >threshold then 1, another <threshold then 1?
+#                        does that matter?
+#                           Answer: as the g(x) has wrapped the direction in it, the > symbol in the final decision function(linear combination) is not the judge in base classifier
+#                                   so no need to worry
+# 
+#                     4. what if error rate for one base classifier is <0.5
+#                           Answer: then alpha<0, the alpha in linear combination function will recitify/flip it automatically.
+# 
+# 
+# todo: 
+#  q: why threshold >0
+# 
+# 
+
+
 import os,re
 import numpy as np
 import pandas as pd
@@ -5,119 +32,52 @@ import random
 import matplotlib
 import matplotlib.pyplot as plt
 import warnings
-from datetime import datetime, timedelta, time, date
 from cascade_func import build_strongclf_def_thres, load_strongclf_def_thres, load_strongclf_adj_thres,\
                             update_XY_with_N_feats, test_cascade_all_stages_keep_true_samples,\
                             update_trnset_with_FP_true_samples, test_cascade_all_stages_real_run,\
-                            update_trnset_with_P_samples, read_haar_feat_random_select_samples
+                            update_trnset_with_P_samples
 from dataset_import import loadDataset, loadDataset_beyourself
 from sklearn.metrics import *
-from sklearn.metrics import cohen_kappa_score
+from util import create_folder, lprint, tt_split, calc_cm_rcall
 
 
 
-
-
-
-
-def tt_split(XY, train_ratio):
-    # eg: train_ratio = 0.7
-    length = len(XY)
-    # print(length)
-    test_enum = range(int((1-train_ratio)*10))
-    test_ind = []
-    for i in test_enum:
-        test_ind = test_ind + list(range(i, length, 10))
-
-    # test_ind = np.arange(n, length, k)
-    train_ind = [x for x in list(range(length)) if x not in test_ind]
-
-    return XY[train_ind], XY[test_ind]
-
-
-def calc_cm_rcall(y_test, y_pred):#
-
-    ct = pd.crosstab(y_test, y_pred, rownames=['True'], colnames=['Predicted'], margins=True)
-
-    # Compute confusion matrix
-    cm = confusion_matrix(y_test, y_pred)
-    
-    accuracy = sum(cm[i,i] for i in range(len(set(y_test))))/sum(sum(cm[i] for i in range(len(set(y_test)))))
-    recall_all = sum(cm[i,i]/sum(cm[i,j] for j in range(len(set(y_test)))) for i in range(len(set(y_test))))/(len(set(y_test)))
-    precision_all = sum(cm[i,i]/sum(cm[j,i] for j in range(len(set(y_test)))) for i in range(len(set(y_test))))/(len(set(y_test)))
-    fscore_all = sum(2*(cm[i,i]/sum(cm[i,j] for j in range(len(set(y_test)))))*(cm[i,i]/sum(cm[j,i] for j in range(len(set(y_test)))))/(cm[i,i]/sum(cm[i,j] for j in range(len(set(y_test))))+cm[i,i]/sum(cm[j,i] for j in range(len(set(y_test))))) for i in range(len(set(y_test))))/len(set(y_test))
-    
-    TP = cm[1,1]
-    FP = cm[0,1]
-    TN = cm[0,0]
-    FN = cm[1,0]
-    # Precision for Positive = TP/(TP + FP)
-    prec_pos = TP/(TP + FP)
-
-    recall_pos = TP/(TP+FN)
-
-    # F1 score for positive = 2 * precision * recall / (precision + recall)….or it can be F1= 2*TP/(2*TP + FP+ FN)
-    f1_pos = 2*TP/(TP*2 + FP+ FN)
-    # TPR = TP/(TP+FN)
-    TPR = cm[1,1]/sum(cm[1,j] for j in range(len(set(y_test))))
-    # FPR = FP/(FP+TN)
-    FPR = cm[0,1]/sum(cm[0,j] for j in range(len(set(y_test))))
-    # specificity = TN/(FP+TN)
-    Specificity = cm[0,0]/sum(cm[0,j] for j in range(len(set(y_test))))
-    MCC = matthews_corrcoef(y_test, y_pred)
-    CKappa = cohen_kappa_score(y_test, y_pred)
-
-    # w_acc = (TP*20 + TN)/ [(TP+FN)*20 + (TN+FP)] if 20:1 ratio of non-feeding to feeding
-    ratio = (TN+FP)/(TP+FN)
-    w_acc = (TP*ratio + TN)/ ((TP+FN)*ratio + (TN+FP))
-
-    return prec_pos, recall_pos, f1_pos, TPR, FPR, Specificity, MCC, CKappa, w_acc, cm
-
-    
-def create_folder(f, deleteExisting=False):
-    '''
-    Create the folder
-
-    Parameters:
-            f: folder path. Could be nested path (so nested folders will be created)
-
-            deleteExising: if True then the existing folder will be deleted.
-
-    '''
-    if os.path.exists(f):
-        if deleteExisting:
-            shutil.rmtree(f)
-    else:
-        os.makedirs(f)
-
-
-def list_files_in_directory(mypath):
-
-    return [f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath, f))]
 
 
 
 class Stage(object):
+    """
+    Parameters
+    ----------     
+    f: false positive rate
+    d: postive recall (detection rate)
+    T: number of iterations
+    beta_list: 
+    model: the path where models are saved
+    path_list:
+    count: attribute, route control function
 
-    def __init__(self, f, d, T, beta_list, model, path_list, count):
+    """
+
+    def __init__(self, f, d, T, beta_list, model, path_list, count, logfile):
         self.f = f
         self.d = d
         self.T = T
         self.beta_list = beta_list
-        self.path_list = path_list
         self.model = model
-        self.count=count        
+        self.path_list = path_list
+        self.count = count        
+        self.logfile = logfile
 
 
     def forward(self, F, D, n_feats_max, T_list, all_feat_list, n_feats, n_feats_list, beta_list, thres_list, path_list, XYTrn, XYTest):
         FPrev = F
         DPrev = D
-        print('  FPrev: ', FPrev)
-        print('  DPrev: ', DPrev)
-        print('\n============== STAGE: ', self.count,' ==============')
+        lprint(self.logfile, '  FPrev: ', FPrev)
+        lprint(self.logfile, '  DPrev: ', DPrev)
+        lprint(self.logfile, '\n============== STAGE: ', self.count,' ==============')
 
-        while F > FPrev*self.f:
-            
+        while F > FPrev*self.f:            
             n_feats = n_feats + 1
             print('  number of feats:', n_feats)
 
@@ -125,8 +85,7 @@ class Stage(object):
                 print('Exceed max number of features.')
                 break
 
-            else:                
-                
+            else:
                 mdlpath = os.path.join(self.model, 'stage_'+str(self.count))
                 create_folder(mdlpath)
 
@@ -136,20 +95,25 @@ class Stage(object):
 
                 # build stage with features selected
                 betas, _ = build_strongclf_def_thres(XYTrn_nfeats, self.T, mdlpath)
+                print( 'DEBUG: betas: ', betas)
 
                 # evaluate cascaded classifier on validation set to determine F and D
                 if self.count == 0:
                     ytest_res, clf_thres = load_strongclf_def_thres(XYTest_nfeats, self.T, mdlpath)
                     print("  clf thres: ", clf_thres)
+
                     _, D, _, _, F, _, _, _, _, _ = calc_cm_rcall(XYTest_nfeats[:,-1], ytest_res)
 
                 else:
                     print( 'DEBUG: thres_list: ', thres_list)
                     print( 'DEBUG: T_list: ', T_list)
+
                     F_res_list, D_res_list, F_prev_all, D_prev_all, XYTest_prev_stage = test_cascade_all_stages_keep_true_samples(XYTest, T_list, all_feat_list, n_feats_list, beta_list, thres_list, path_list)
                     XYTest_prev_stage_nfeats = update_XY_with_N_feats(XYTest_prev_stage, all_feat_list, n_feats)
                     ytest_res, clf_thres = load_strongclf_def_thres(XYTest_prev_stage_nfeats, self.T, mdlpath)
+
                     print("  clf thres: ", clf_thres)
+                    
                     _, D, _, _, F, _, _, _, _, _ = calc_cm_rcall(XYTest_prev_stage_nfeats[:,-1], ytest_res)
                     F = F*F_prev_all
                     D = D*D_prev_all
@@ -177,6 +141,7 @@ class Stage(object):
                     else:
                         break
 
+
         ytrain_res = load_strongclf_adj_thres(XYTrn, self.T, clf_thres, mdlpath)
         XYTrn = update_trnset_with_FP_true_samples(XYTrn, ytrain_res)
 
@@ -195,45 +160,67 @@ class Stage(object):
         
 
 class Cascaded(object):
+    """
+    Parameters
+    ----------     
+    stage_parameter: a list, of which each element contains (f, d, T)
 
-    def __init__(self, stage_parameter, split, model_path):
+        f: false positive rate
+        d: postive recall (detection rate)
+        T: number of iterations
+
+    split: train set to validation set ratio
+
+    model_path: the path where models are saved
+
+    """
+
+
+    def __init__(self, stage_parameter, split, model_path, n_feats_max, logfile):
         self.parameter = stage_parameter
         self.split = split
         self.model = model_path
+        self.n_feats_max = n_feats_max
+        self.logfile = logfile
         create_folder(self.model)
 
 
     def fit(self, XY):
+        """
+        split XY into train set and validation set
+        """
         XYPos =  XY[np.where(XY[:,-1]==1)[0],:]
         XYNeg =  XY[np.where(XY[:,-1]==0)[0],:]
-        print('XYPos:',XYPos.shape)
+        lprint(self.logfile, 'XYPos:', XYPos.shape)
+        lprint(self.logfile, 'XYNeg:', XYNeg.shape)
 
         XYPosTrn, XYPosVal = tt_split(XYPos, self.split)
         XYNegTrn, XYNegVal = tt_split(XYNeg, self.split)
 
-        P = XYPosTrn
-        N = XYNegTrn
-
-        XYTrn = np.vstack((P, N))
-        print('XYTrn shape:', XYTrn.shape)
+        XYTrn = np.vstack((XYPosTrn, XYNegTrn))
+        lprint(self.logfile, 'XYTrn shape:', XYTrn.shape, ', Pos:', XYPosTrn.shape, ', Neg:', XYNegTrn.shape)
         XYVal = np.vstack((XYPosVal,XYNegVal))
-        print('XYVal shape:', XYVal.shape)
+        lprint(self.logfile, 'XYVal shape:', XYVal.shape, ', Pos:', XYPosVal.shape, ', Neg:', XYNegVal.shape)
 
 
+        """
+        build cascade
+        """
         self.cascade_stages = []
         count = 0
-        for f,d, T in self.parameter:
-            stage = Stage(f, d, T, [], self.model, [], count)
+
+        for f, d, T in self.parameter:
+            stage = Stage(f, d, T, [], self.model, [], count, logfile=self.logfile)
             count += 1 
             self.cascade_stages.append(stage)
 
         # get all_feat_list
-        _, all_feat_list = build_strongclf_def_thres(XY, T = 10, mdlpath = './tmp_mdl/')
+        _, all_feat_list = build_strongclf_def_thres(XY, T=10, mdlpath='./tmp_mdl/')
         
         n_feats=0
         F = 1
         D = 1
-        n_feats_max = 600
+        n_feats_max = self.n_feats_max
         n_feats_list = []
         beta_list = []
         thres_list = []
@@ -241,19 +228,19 @@ class Cascaded(object):
         T_list = []
 
         for s in self.cascade_stages:
-            F, D, T_list, n_feats, n_feats_list, beta_list, thres_list, path_list, XYTrn = s.forward(F, D, n_feats_max, T_list, all_feat_list, n_feats, n_feats_list, beta_list, thres_list, path_list, XYTrn, XYVal)   
+
+            F, D, T_list, n_feats, n_feats_list, beta_list, thres_list, path_list, XYTrn = \
+                s.forward(F, D, n_feats_max, T_list, all_feat_list, n_feats, n_feats_list, beta_list, thres_list, path_list, XYTrn, XYVal)   
+            
+            lprint(self.logfile, 'feat list: ', all_feat_list[:n_feats])
 
         return T_list, all_feat_list, n_feats_list, beta_list, thres_list, path_list
 
 
     def test(self, XY, T_list, all_feat_list, n_feats_list, beta_list, thres_list, path_list):
-        F_list, D_list, F_final, D_final = test_cascade_all_stages_real_run(XY, T_list, all_feat_list, n_feats_list, beta_list, thres_list, path_list)
-        print('Recall(postive) for every stage: ', D_list)
-        print('False positive rate for every stage: ', F_list)
-        print('Overall recall(postive): ', D_final)
-        print('Overall false positive rate: ', F_final)
+        F_list, D_list, F_final, D_final, y_res = test_cascade_all_stages_real_run(XY, T_list, all_feat_list, n_feats_list, beta_list, thres_list, path_list)
 
-        return F_list, D_list, F_final, D_final
+        return F_list, D_list, F_final, D_final, y_res
 
 
 

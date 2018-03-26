@@ -65,7 +65,7 @@ def rm_files_in_folder(folder):
 
 
 def list_files_in_directory(mypath):
-    
+
     return [f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath, f))]
 
 
@@ -85,54 +85,54 @@ def list_files_in_directory(mypath):
 
 
 
-def read_haar_feat_raw_separate_files(meal, rec, winsize):
-    folder = os.path.join('/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/haar_feature/', meal)
-    allfiles = list_files_in_directory(folder)
-    file_header = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_'
-    RegExr= file_header+'\d+.txt'
-    matches = [re.search(RegExr, f) for f in allfiles]
-    files = ([m.group() for m in matches if m])
+# def read_haar_feat_raw_separate_files(meal, rec, winsize):
+#     folder = os.path.join('/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/haar_feature/', meal)
+#     allfiles = list_files_in_directory(folder)
+#     file_header = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_'
+#     RegExr= file_header+'\d+.txt'
+#     matches = [re.search(RegExr, f) for f in allfiles]
+#     files = ([m.group() for m in matches if m])
 
-    # files = [files[0], files[1]]
-    XY = [np.loadtxt(os.path.join(folder, file), delimiter=",", unpack=False) for file in files]
-    XY = np.vstack(XY)
-    return XY
+#     # files = [files[0], files[1]]
+#     XY = [np.loadtxt(os.path.join(folder, file), delimiter=",", unpack=False) for file in files]
+#     XY = np.vstack(XY)
+#     return XY
 
 
 
-def read_haar_feat_random_select_samples(meal, rec, winsize, ratio, use_seed):
-    # ratio: negative to positive samples
+# def read_haar_feat_random_select_samples(meal, rec, winsize, ratio, use_seed):
+#     # ratio: negative to positive samples
 
-    if isinstance(meal,str):
-        folder = os.path.join('/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/haar_feature/', meal)
-        pos_file = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_pos.txt'
-        neg_file = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_neg.txt'
-        XYPos = np.loadtxt(os.path.join(folder, pos_file), delimiter=",", unpack=False)
-        XYNeg = np.loadtxt(os.path.join(folder, neg_file), delimiter=",", unpack=False)
-        if use_seed: random.seed(1)
-        rand_ind = random.sample(range(0, XYNeg.shape[0]), XYPos.shape[0]*ratio)
-        XYNeg = XYNeg[rand_ind, :]
+#     if isinstance(meal,str):
+#         folder = os.path.join('/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/haar_feature/', meal)
+#         pos_file = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_pos.txt'
+#         neg_file = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_neg.txt'
+#         XYPos = np.loadtxt(os.path.join(folder, pos_file), delimiter=",", unpack=False)
+#         XYNeg = np.loadtxt(os.path.join(folder, neg_file), delimiter=",", unpack=False)
+#         if use_seed: random.seed(1)
+#         rand_ind = random.sample(range(0, XYNeg.shape[0]), XYPos.shape[0]*ratio)
+#         XYNeg = XYNeg[rand_ind, :]
 
-        XY = np.vstack((XYPos, XYNeg))
+#         XY = np.vstack((XYPos, XYNeg))
 
-    elif isinstance(meal,list):
-        meals = meal
-        XYs = []
-        for meal in meals:
-            folder = os.path.join('/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/haar_feature/', meal)
-            pos_file = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_pos.txt'
-            neg_file = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_neg.txt'
-            XYPos = np.loadtxt(os.path.join(folder, pos_file), delimiter=",", unpack=False)
-            XYNeg = np.loadtxt(os.path.join(folder, neg_file), delimiter=",", unpack=False)
-            if use_seed: random.seed(1)
-            rand_ind = random.sample(range(0, XYNeg.shape[0]), XYPos.shape[0]*ratio)
-            XYNeg = XYNeg[rand_ind, :]
+#     elif isinstance(meal,list):
+#         meals = meal
+#         XYs = []
+#         for meal in meals:
+#             folder = os.path.join('/Volumes/SHIBO/BeYourself/BeYourself/PROCESS/P120/wrist/haar_feature/', meal)
+#             pos_file = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_pos.txt'
+#             neg_file = 'feat_rec'+str(rec)+'_label_win'+str(winsize)+'_neg.txt'
+#             XYPos = np.loadtxt(os.path.join(folder, pos_file), delimiter=",", unpack=False)
+#             XYNeg = np.loadtxt(os.path.join(folder, neg_file), delimiter=",", unpack=False)
+#             if use_seed: random.seed(1)
+#             rand_ind = random.sample(range(0, XYNeg.shape[0]), XYPos.shape[0]*ratio)
+#             XYNeg = XYNeg[rand_ind, :]
 
-            XY = np.vstack((XYPos, XYNeg))
-            XYs.append(XY)
-        XY = np.vstack(XYs)
+#             XY = np.vstack((XYPos, XYNeg))
+#             XYs.append(XY)
+#         XY = np.vstack(XYs)
 
-    return XY
+#     return XY
 
 
 
@@ -227,9 +227,11 @@ def build_strongclf_def_thres(XY, T, mdlpath, verbose = 0):
         # 4. update weights
         w, betas = __w_beta_update(betas, t, errmin, w_norm, samples, y_label, y_pred)
 
-        __save_weakclf(XY[:,np.argmin(err)].reshape(-1, 1), y_label, \
+        __save_weakclf(XY[:,np.argmin(err)].reshape(-1, 1), \
+                       y_label, \
                        os.path.join(mdlpath,str(t)+'.sav'), \
-                       f_opt_ind, betas[t],\
+                       f_opt_ind, \
+                       betas[t],\
                        os.path.join(mdlpath,str(t)+'_conf.txt'), \
                        w_norm)
 
@@ -498,4 +500,22 @@ def test_cascade_all_stages_real_run(XY, T_list, all_feat_list, n_feats_list, be
     F_final = functools.reduce(operator.mul, F_list, 1)
     D_final = functools.reduce(operator.mul, D_list, 1)
 
-    return F_list, D_list, F_final, D_final
+    return F_list, D_list, F_final, D_final, y_res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
